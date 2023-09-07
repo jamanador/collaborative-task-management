@@ -6,42 +6,29 @@ import auth from "../../assets/auth.svg";
 import SmallSpinner from "../Spinner/SmallSpinner";
 const SignUp = () => {
   const { register, handleSubmit } = useForm();
-  const [loading, setLoading] = useState(false); 
-  const navigate = useNavigate()
-
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSignUp = (data) => {
     setLoading(true);
     const name = data.name;
     const bio = data.bio;
-    const image = data.image[0];
     const email = data.email;
     const password = data.password;
-    const formData = new FormData();
-    formData.append("image", image);
-    fetch(
-      `https://api.imgbb.com/1/upload?key=${import.meta.env.IMGBB_API_KEY}`,
-      {
-        method: "POST",
-        body: formData,
-      }
-    )
-      .then((res) => res.json())
-      .then((imageData) => {
-        console.log("imageData", imageData);
-      });
+    const photo = data.photo
     const userInfo = {
       name,
       bio,
       email,
       password,
-      image,
+      photo,
     };
+    console.log("infoooooo", userInfo);
     if (userInfo) {
       localStorage.setItem("userInfo", JSON.stringify(userInfo));
       toast.success("Account Created Successfully");
       setLoading(false);
-      navigate('/login')
+      navigate("/login");
     }
   };
 
@@ -104,33 +91,12 @@ const SignUp = () => {
             placeholder="Designation / Bio"
           />
         </div>
-        <label
-          htmlFor="dropzone-file"
-          className="flex items-center px-3 py-3 mx-auto mt-6 text-center bg-white rounded-md cursor-pointer border"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6 text-gray-300 dark:text-gray-500"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
-            />
-          </svg>
-          <h2 className="mx-3 text-gray-400">Profile Photo</h2>
-          <input
-            {...register("image", { required: "required*" })}
-            id="dropzone-file"
-            type="file"
-            className="hidden"
-          />
-        </label>
-
+        <input
+          className="block w-full py-3 text-gray-700 bg-white border rounded-md px-11  focus:border-blue-400 mt-4"
+          type="text"
+          {...register("photo", { required: "required*" })}
+          placeholder="Profile Picture URL"
+        />
         <div className="relative flex items-center mt-6">
           <span className="absolute">
             <svg

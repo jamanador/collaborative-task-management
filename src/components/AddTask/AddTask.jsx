@@ -39,7 +39,7 @@ function AddTask() {
   };
 
   return (
-    <div>
+    <div className="px-4">
       <h2 className="font-bold py-2">Create Task</h2>
       <form onSubmit={handleCreateTask}>
         <div>

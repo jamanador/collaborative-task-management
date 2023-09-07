@@ -50,11 +50,7 @@ const Navbar = () => {
               </NavLink>
             </li>
           ))}
-          {userdetail && (
-            <Link to="/profile" className="font-bold text-md ">
-              <button>{userdetail?.name}</button>
-            </Link>
-          )}
+
           {userdetail ? (
             userdetail?.email ? (
               <li className="font-medium text-lg">
@@ -74,6 +70,18 @@ const Navbar = () => {
             <li className="font-medium text-lg">
               <Link to="/signup">Sign Up</Link>
             </li>
+          )}
+          {userdetail && (
+            <Link to="/profile" className="font-bold text-md ">
+              <button>
+                <img
+                  className="w-10 rounded-full"
+                  title={userdetail?.name}
+                  src={userdetail.photo}
+                  alt=""
+                />
+              </button>
+            </Link>
           )}
         </ul>
         <MobileMenu menuOptions={MENU_OPTIONS}></MobileMenu>
