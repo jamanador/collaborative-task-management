@@ -1,10 +1,9 @@
-
 const Home = () => {
-    return (
-        <div>
-            <h3>This is Home page</h3>
-        </div>
-    );
+  return (
+    <div>
+      <h3>Welcome to CTM App</h3>
+    </div>
+  );
 };
 
 export default Home;

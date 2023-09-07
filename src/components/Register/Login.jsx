@@ -5,9 +5,8 @@ const Login = () => {
         <div className='hidden md:block'>
            <img src={auth} className='w-96' alt="" />
         </div>
-        <form className="w-full px-6 sm:w-5/12">
-   
-                 <div className="relative flex items-center mt-6">
+            <form className="w-full px-6 sm:w-5/12">
+                  <div className="relative flex items-center mt-6">
                    <span className="absolute">
                      <svg
                        xmlns="http://www.w3.org/2000/svg"

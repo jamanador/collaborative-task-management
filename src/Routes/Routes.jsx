@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "../Layouts/RootLayout";
 import Home from "../Pages/Home/Home";
+import Profile from "../Pages/Profile/Profile";
 import AddTask from "../components/AddTask/AddTask";
 import Login from "../components/Register/Login";
 import SignUp from "../components/Register/SignUp";
@@ -27,6 +28,10 @@ const Routes = () => {
                     path: '/login',
                     element: <Login/>
                 },
+                {
+                    path:"/profile",
+                    element:<Profile/>
+                }
             ]
         }
     ])
