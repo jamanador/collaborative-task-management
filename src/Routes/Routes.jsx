@@ -3,6 +3,7 @@ import RootLayout from "../Layouts/RootLayout";
 import Home from "../Pages/Home/Home";
 import Profile from "../Pages/Profile/Profile";
 import AddTask from "../components/AddTask/AddTask";
+import AllTask from "../components/AddTask/AllTask";
 import Login from "../components/Register/Login";
 import SignUp from "../components/Register/SignUp";
 
@@ -19,6 +20,10 @@ const Routes = () => {
                 {
                     path: '/add-task',
                     element: <AddTask/>
+                },
+                {
+                    path:'/all-task',
+                    element:<AllTask/>
                 },
                 {
                     path: '/signup',

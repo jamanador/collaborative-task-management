@@ -33,7 +33,7 @@ const Login = () => {
         className="w-full px-6 sm:w-5/12"
         onSubmit={handleSubmit(handlelogin)}
       >
-        <h3>Test: Please Verify Email & Password</h3>
+        <h3><span className="font-bold">Test</span>: Please Verify Email & Password</h3>
         <div className="relative flex items-center mt-6">
           <span className="absolute">
             <svg

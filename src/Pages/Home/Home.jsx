@@ -1,7 +1,8 @@
 import banner from "../../assets/banner.jpg";
 const Home = () => {
   return (
-    <div className="flex justify-center items-center">
+<div>
+<div className="flex justify-center items-center">
       <div className="w-full md:w-6/12 py-24 px-6 sm:py-0">
         <h3 className="font-bold">
           The Ultimate Guide to Project Management Excellence
@@ -22,6 +23,7 @@ const Home = () => {
         className="w-full sm:w-8/12 sm:block hidden"
       />
     </div>
+</div>
   );
 };
 

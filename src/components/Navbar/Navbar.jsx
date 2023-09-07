@@ -12,6 +12,10 @@ const MENU_OPTIONS = [
     title: "Add Task",
     link: "/add-task",
   },
+  {
+    title: "All Task",
+    link: "/all-task",
+  },
 ];
 const Navbar = () => {
   const localData = localStorage.getItem("userInfo");
@@ -67,7 +71,7 @@ const Navbar = () => {
               </li>
             )
           ) : (
-            <li>
+            <li className="font-medium text-lg">
               <Link to="/signup">Sign Up</Link>
             </li>
           )}

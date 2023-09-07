@@ -1,41 +1,83 @@
-import { useForm } from "react-hook-form";
+import { useState } from "react";
 
-const AddTask = () => {
-  const { register, handleSubmit } = useForm();
-  const handleAddTask = (data) => {
-    console.log("adddded", data);
-    const task = data.name;
-    const taskDetail = data.description;
-    const tasks = {
-      task,
-      taskDetail,
+function AddTask() {
+  // State variables for task details
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [dueDate, setDueDate] = useState("");
+  const [priority, setPriority] = useState("Completed");
+
+  // State variable for task list
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
+
+  // Function to handle task creation
+  const handleCreateTask = (e) => {
+    e.preventDefault();
+
+    const newTask = {
+      title,
+      description,
+      dueDate,
+      priority,
+      assignedTo: "", // Add a state for assignedTo and handle assignment logic
     };
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    // Update the tasks list with the new task
+    setTasks([...tasks, newTask]);
+
+    // Clear form fields
+    setTitle("");
+    setDescription("");
+    setDueDate("");
+    setPriority("Completed");
+
+    // Store updated tasks list in localStorage
+    localStorage.setItem("tasks", JSON.stringify([...tasks, newTask]));
   };
+
   return (
     <div>
-      <h4 className="font-bold py-3">Add New Task </h4>
-      <form onSubmit={handleSubmit(handleAddTask)}>
-        <label htmlFor="name" className="block text-gray-600 py-1">
-          Task Name
-        </label>
-        <input
-          type="text"
-          placeholder="name"
-          {...register("name", { required: "name is required" })}
-          className="w-96 focus:outline-0 px-4 py-2 rounded-md border border-gray  text-gray-800"
-        />
-        <label htmlFor="name" className="block text-gray-600 py-1">
-          Task Detail
-        </label>
-        <textarea
-          type="text"
-          {...register("description", {
-            required: "Detail Explaintation is required",
-          })}
-          placeholder="Write your task Detail"
-          className="w-96 focus:outline-0 px-4 py-2 rounded-md border border-gray  text-gray-800"
-        />
+      <h2 className="font-bold py-2">Create Task</h2>
+      <form onSubmit={handleCreateTask}>
+        <div>
+          <h3>Tisk Title</h3>
+          <input
+            className="w-96 focus:outline-0 px-4 py-2 rounded-md border border-gray  text-gray-800"
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+        <div>
+          <h3>Task Detail:</h3>
+          <textarea
+            className="w-96 focus:outline-0 px-4 py-2 rounded-md border border-gray  text-gray-800"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="pr-2">Due Date:</label>
+          <input
+            type="date"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+          />
+        </div>
+        <div className="pt-3">
+          <label>Priority:</label>
+          <select
+            value={priority}
+            onChange={(e) => setPriority(e.target.value)}
+          >
+            <option value="Completed">Completed</option>
+            <option value="Progress">Progress</option>
+            <option value="Pending">Pending</option>
+          </select>
+        </div>
         <button
           type="submit"
           className="block mt-2 py-1 px-36 text-center rounded-xl bg-blue-700 text-white"
@@ -45,6 +87,6 @@ const AddTask = () => {
       </form>
     </div>
   );
-};
+}
 
 export default AddTask;
