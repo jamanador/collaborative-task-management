@@ -1,8 +1,17 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import auth from "../../assets/auth.svg";
+import SmallSpinner from "../Spinner/SmallSpinner";
 const SignUp = () => {
   const { register, handleSubmit } = useForm();
+  const [loading, setLoading] = useState(false); 
+  const navigate = useNavigate()
+
+
   const handleSignUp = (data) => {
+    setLoading(true);
     const name = data.name;
     const bio = data.bio;
     const image = data.image[0];
@@ -10,10 +19,14 @@ const SignUp = () => {
     const password = data.password;
     const formData = new FormData();
     formData.append("image", image);
-    fetch(`https://api.imgbb.com/1/upload?key=${import.meta.env.IMGBB_API_KEY}`,{
-      method: "POST",
-      body: formData
-    }).then((res) => res.json())
+    fetch(
+      `https://api.imgbb.com/1/upload?key=${import.meta.env.IMGBB_API_KEY}`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    )
+      .then((res) => res.json())
       .then((imageData) => {
         console.log("imageData", imageData);
       });
@@ -24,8 +37,12 @@ const SignUp = () => {
       password,
       image,
     };
-    console.log(userInfo);
-    localStorage.setItem("userInfo", JSON.stringify(userInfo));
+    if (userInfo) {
+      localStorage.setItem("userInfo", JSON.stringify(userInfo));
+      toast.success("Account Created Successfully");
+      setLoading(false);
+      navigate('/login')
+    }
   };
 
   return (
@@ -171,7 +188,7 @@ const SignUp = () => {
             type="submit"
             className="w-full bg-blue-500 text-white rounded-lg py-2 px-6 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
           >
-            SUBMIT
+            {loading ? <SmallSpinner /> : "SUBMIT"}
           </button>
         </div>
       </form>
