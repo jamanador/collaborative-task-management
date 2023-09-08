@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function AddTask() {
+
+
+  const localData = localStorage.getItem("userInfo");
+  let userdetail = JSON.parse(localData);
   // State variables for task details
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -86,12 +90,14 @@ function AddTask() {
             <option value="pending">Pending</option>
           </select>
         </div>
-        <button
+        {
+          userdetail ? <button
           type="submit"
           className="block mt-2 py-1 px-36 text-center rounded-xl bg-blue-700 text-white"
         >
           Add Task
-        </button>
+        </button> : <><h3 className="text-green-600 font-medium pt-3">If you want to add task  Please</h3><button className="py-1 px-4 text-red-600 font-bold underline"><Link to="/signup">Account Create First</Link></button></>
+        }
       </form>
     </div>
   );
