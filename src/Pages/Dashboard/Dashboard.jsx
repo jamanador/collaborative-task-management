@@ -38,17 +38,17 @@ const Dashboard = () => {
         <h3 className="font-bold pb-2">Summary of Tasks</h3>
         <div className="flex flex-wrap justify-center items-center gap-y-6 gap-x-8">
           <div className="border border-slate-200 p-8 text-center">
-            <h3 className="font-bold"> {completedTasks}</h3>
-            <p className="font-medium">Completed Tasks</p>
+            <h3 className="font-extrabold text-lg text-green-500  rounded-full"> {completedTasks}</h3>
+            <p className="font-bold text-sm">Completed Tasks</p>
           </div>
 
           <div className="border border-slate-200 p-8 text-center">
-            <h3>{inProgressTasks}</h3>
-            <p>In Progress Tasks</p>
+            <h3 className="font-extrabold text-lg text-green-700">{inProgressTasks}</h3>
+            <p className="font-bold text-sm">In Progress Tasks</p>
           </div>
           <div className="border border-slate-200 p-8 text-center">
-            <h3>{pendingTasks}</h3>
-            <p>Pending Tasks</p>
+            <h3 className="font-extrabold text-lg text-yellow-600">{pendingTasks}</h3>
+            <p className="font-bold text-sm">Pending Tasks</p>
           </div>
         </div>
       </div>
