@@ -8,7 +8,7 @@ const TaskCard = ({ task }) => {
         <p>
           Due Date : <span className="text-red-500">{dueDate}</span>
         </p>
-        <p>Priority : {priority}</p>
+        <p>Status : {priority}</p>
       </div>
     </div>
   );

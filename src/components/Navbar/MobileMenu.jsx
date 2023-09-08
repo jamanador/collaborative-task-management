@@ -18,23 +18,23 @@ const MobileMenu = ({ menuOptions }) => {
   };
   return (
     <Menu as="div" className="inline-block relative text-left md:hidden">
-       <div className="flex justify-center items-center">
-       {userdetail && (
-            <Link to="/profile" className="font-bold text-md mr-3 text-center">
-              <button>
-                <img
-                  className="w-10 rounded-full"
-                  title={userdetail?.name}
-                  src={userdetail.photo}
-                  alt=""
-                />
-              </button>
-            </Link>
-          )}
-      <Menu.Button className="p-1.5 text-2xl rounded-md bg-primary-900 border border-primary-700 hover:bg-primary-950/50 hover:border-primary-600 shadow-sm">
-        <HiMenuAlt3 /> 
-      </Menu.Button>
-       </div>
+      <div className="flex justify-center items-center">
+        {userdetail && (
+          <Link to="/profile" className="font-bold text-md mr-3 text-center">
+            <button>
+              <img
+                className="w-10 rounded-full"
+                title={userdetail?.name}
+                src={userdetail.photo}
+                alt=""
+              />
+            </button>
+          </Link>
+        )}
+        <Menu.Button className="p-1.5 text-2xl rounded-md bg-primary-900 border border-primary-700 hover:bg-primary-950/50 hover:border-primary-600 shadow-sm">
+          <HiMenuAlt3 />
+        </Menu.Button>
+      </div>
       <Transition
         as={Fragment}
         enter="transition ease-out duration-100"
@@ -55,7 +55,7 @@ const MobileMenu = ({ menuOptions }) => {
               {title}
             </Menu.Item>
           ))}
-                    
+
           {userdetail ? (
             userdetail?.email ? (
               <li className="list-none font-medium text-lg">

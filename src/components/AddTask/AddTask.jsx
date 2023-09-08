@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 function AddTask() {
   // State variables for task details
@@ -6,6 +8,7 @@ function AddTask() {
   const [description, setDescription] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [priority, setPriority] = useState("Completed");
+  const navigate = useNavigate();
 
   // State variable for task list
   const [tasks, setTasks] = useState(() => {
@@ -16,7 +19,6 @@ function AddTask() {
   // Function to handle task creation
   const handleCreateTask = (e) => {
     e.preventDefault();
-
     const newTask = {
       title,
       description,
@@ -24,7 +26,10 @@ function AddTask() {
       priority,
       assignedTo: "", // Add a state for assignedTo and handle assignment logic
     };
-
+    if (newTask) {
+      toast.success("Task Added");
+      navigate("/all-task");
+    }
     // Update the tasks list with the new task
     setTasks([...tasks, newTask]);
 
@@ -48,12 +53,14 @@ function AddTask() {
             className="w-96 focus:outline-0 px-4 py-2 rounded-md border border-gray  text-gray-800"
             type="text"
             value={title}
+            required
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div>
           <h3>Task Detail:</h3>
           <textarea
+            required
             className="w-96 focus:outline-0 px-4 py-2 rounded-md border border-gray  text-gray-800"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -63,6 +70,7 @@ function AddTask() {
           <label className="pr-2">Due Date:</label>
           <input
             type="date"
+            required
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
           />
@@ -73,9 +81,9 @@ function AddTask() {
             value={priority}
             onChange={(e) => setPriority(e.target.value)}
           >
-            <option value="Completed">Completed</option>
-            <option value="Progress">Progress</option>
-            <option value="Pending">Pending</option>
+            <option value="completed">Completed</option>
+            <option value="inProgress">In Progress</option>
+            <option value="pending">Pending</option>
           </select>
         </div>
         <button
