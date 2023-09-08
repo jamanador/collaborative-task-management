@@ -33,9 +33,9 @@ const SignUp = () => {
   };
 
   return (
-    <section className="flex justify-evenly items-center py-12">
-      <div className="hidden md:block">
-        <img src={auth} className="w-96" alt="" />
+    <section className="flex flex-wrap justify-evenly items-center py-12">
+      <div className="">
+        <img src={auth} className="w-80 md:w-96 " alt="" />
       </div>
       <form
         onSubmit={handleSubmit(handleSignUp)}

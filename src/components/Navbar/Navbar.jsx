@@ -72,11 +72,11 @@ const Navbar = () => {
             </li>
           )}
           {userdetail && (
-            <Link to="/profile" className="font-bold text-md ">
+            <Link to="/dashboard" className="font-bold text-md ">
               <button>
                 <img
                   className="w-10 rounded-full"
-                  title={userdetail?.name}
+                  title={`Dashboard`}
                   src={userdetail.photo}
                   alt=""
                 />

@@ -47,7 +47,7 @@ const MobileMenu = ({ menuOptions }) => {
         <Menu.Items className="absolute right-0 px-2.5 py-4 mt-2 space-y-1 w-40 rounded-md shadow-lg origin-top-right bg-slate-100 focus:outline-none border border-primary-700">
           {menuOptions.map(({ title, link }) => (
             <Menu.Item
-              className="block px-3 py-2 font-medium rounded-md hover:bg-primary-700 hover:text-white"
+              className="block px-3 py-2 font-medium rounded-md"
               as={NavLink}
               key={link}
               to={link}
@@ -58,7 +58,7 @@ const MobileMenu = ({ menuOptions }) => {
 
           {userdetail ? (
             userdetail?.email ? (
-              <li className="list-none font-medium text-lg">
+              <li className="list-none block px-3 py-2 font-medium rounded-md">
                 <button
                   onClick={handleLogOut}
                   className="bg-red-500 text-white py-1 px-4 rounded-full text-sm"
@@ -67,12 +67,12 @@ const MobileMenu = ({ menuOptions }) => {
                 </button>
               </li>
             ) : (
-              <li className="list-none font-medium text-lg">
+              <li className="list-none block px-3 py-2 font-medium rounded-md">
                 <Link to="/login">Login</Link>
               </li>
             )
           ) : (
-            <li className="list-none font-medium text-lg">
+            <li className="list-none block px-3 py-2 font-medium rounded-md">
               <Link to="/signup">Sign Up</Link>
             </li>
           )}

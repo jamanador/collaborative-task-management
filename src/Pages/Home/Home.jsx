@@ -3,8 +3,8 @@ import banner from "../../assets/banner.jpg";
 const Home = () => {
   return (
 <div>
-<div className="flex justify-center items-center">
-      <div className="w-full md:w-6/12 py-24 px-6 sm:py-0">
+<div className="flex md:flex-wrap flex-wrap-reverse justify-center items-center py-8 sm:py-12">
+      <div className="w-full md:w-6/12  px-6 sm:py-0">
         <h3 className="font-bold">
           The Ultimate Guide to Project Management Excellence
         </h3>
@@ -20,11 +20,13 @@ const Home = () => {
         </Link>
        </button>
       </div>
+      <div className="w-10/12 md:w-6/12">
       <img
         src={banner}
         alt="banner"
-        className="w-full sm:w-8/12 sm:block hidden"
+        className="w-full"
       />
+      </div>
     </div>
 </div>
   );

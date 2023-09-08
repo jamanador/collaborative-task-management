@@ -16,7 +16,7 @@ const AllTask = () => {
   const alltask = [...filterTasks];
   return (
     <>
-      <div className="flex justify-between my-10">
+      <div className="flex justify-between my-10 mx-4">
         <h2 className="font-bold">Task List</h2>
         <div>
           <label>Filter:</label>

@@ -25,12 +25,12 @@ const Login = () => {
   };
 
   return (
-    <section className="flex justify-evenly items-center py-12">
-      <div className="hidden md:block">
-        <img src={auth} className="w-96" alt="" />
+    <section className="flex flex-wrap justify-evenly items-center py-12">
+      <div className="">
+        <img src={auth} className="w-80 sm:w-96" alt="" />
       </div>
       <form
-        className="w-full px-6 sm:w-5/12"
+        className="w-full px-6 sm:w-5/12 py-6"
         onSubmit={handleSubmit(handlelogin)}
       >
         <h3><span className="font-bold">Test</span>: Please Verify Email & Password</h3>
